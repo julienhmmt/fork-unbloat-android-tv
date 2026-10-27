@@ -52,12 +52,12 @@ Is your Android TV laggy, full of ads, with audio drifting out of sync during mo
 
 | System | File | First launch |
 |---|---|---|
-| Windows 10 / 11 | `KitTVAndroid-…-windows-x64.exe` | If Windows shows "Windows protected your PC": **More info → Run anyway**. |
-| macOS (Apple M1 and later) | `KitTVAndroid-…-macos-apple-silicon.zip` | Open the zip, drag **Kit TV Android** to Applications. On first launch: right-click → **Open**, or **System Settings → Privacy & Security → Open Anyway**. |
+| Windows 10 / 11 | `KitTVAndroid-…-windows-x64.exe` | If Windows shows "Windows protected your PC": **More info → Run anyway**. A small black window opens with the interface: keep it open. |
+| macOS (Apple M1 and later) | `KitTVAndroid-…-macos-apple-silicon.zip` | Open the zip, then double-click **Kit TV Android** in the folder: Terminal opens, then the interface. If macOS refuses: **System Settings → Privacy & Security → Open Anyway**, then launch again. Allow **local network** access for Terminal. macOS 12 or later; otherwise use the scripts below. |
 | macOS (Intel processor) | `KitTVAndroid-…-macos-intel.zip` | Same as above. |
 | Linux | `KitTVAndroid-…-linux-x64.tar.gz` (or `arm64`) | Extract, then run `kit-tv-android`. |
 
-The app opens in your browser and closes when you close the tab. It does exactly the same as the scripts below, with the same safety checks. The apps aren't signed (a certificate costs money), hence the warning on first launch.
+The app opens in your browser and closes when you close the tab. It does exactly the same as the scripts below, with the same safety checks. The apps aren't signed (a certificate costs money), hence the warning on first launch. If an antivirus flags the exe, it's a common false alarm for small unsigned programs: the source code is in this repo, and you can compare the file's hash with the release's `SHA256SUMS.txt`.
 
 **With the scripts** (nothing to download but the kit):
 
@@ -285,6 +285,8 @@ As a last resort, a factory reset always brings the TV back to new. It also eras
 | Movies still stutter | Switch the TV to **5 GHz** Wi-Fi or an Ethernet cable. Turn off motion smoothing (MEMC, Motion) in the picture settings. If that's not enough, the TV lacks power: an external streaming box will be smoother. |
 | Windows blocks `LANCER.bat` | Right-click the file → **Properties** → tick **Unblock**. Or "More info" → **Run anyway**. |
 | macOS won't open `LANCER.command` | Right-click (or Ctrl+click) the file → **Open** → **Open**. If "permission denied" shows up, open Terminal in the kit folder and type `bash LANCER.sh`. |
+| macOS: the app won't open | In Terminal, type `xattr -cr ~/Downloads/"Kit TV Android"` (adjust the path), then double-click **Kit TV Android** again. |
+| macOS: "no device responds" although the TV is detected | Allow **Terminal** in **System Settings → Privacy & Security → Local Network**, then relaunch the app. |
 | Linux: "Permission denied" on `LANCER.sh` | Run `chmod +x LANCER.sh` once, or start it with `bash LANCER.sh`. |
 
 ## Folder contents

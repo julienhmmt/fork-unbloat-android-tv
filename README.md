@@ -52,12 +52,12 @@ Votre TV Android rame, affiche des pubs partout, et le son se décale pendant le
 
 | Système | Fichier | Premier lancement |
 |---|---|---|
-| Windows 10 / 11 | `KitTVAndroid-…-windows-x64.exe` | Si Windows affiche « Windows a protégé votre ordinateur » : **Informations complémentaires → Exécuter quand même**. |
-| macOS (Apple M1 et plus récents) | `KitTVAndroid-…-macos-apple-silicon.zip` | Ouvrez le zip, glissez **Kit TV Android** dans Applications. Au premier lancement : clic droit → **Ouvrir**, ou **Réglages Système → Confidentialité et sécurité → Ouvrir quand même**. |
+| Windows 10 / 11 | `KitTVAndroid-…-windows-x64.exe` | Si Windows affiche « Windows a protégé votre ordinateur » : **Informations complémentaires → Exécuter quand même**. Une petite fenêtre noire s'ouvre avec l'interface : laissez-la ouverte. |
+| macOS (Apple M1 et plus récents) | `KitTVAndroid-…-macos-apple-silicon.zip` | Ouvrez le zip, puis double-cliquez sur **Kit TV Android** dans le dossier : le Terminal s'ouvre, puis l'interface. Si macOS refuse : **Réglages Système → Confidentialité et sécurité → Ouvrir quand même**, puis relancez. Autorisez l'accès au **réseau local** pour le Terminal. macOS 12 ou plus récent ; sinon, utilisez les scripts ci-dessous. |
 | macOS (processeur Intel) | `KitTVAndroid-…-macos-intel.zip` | Pareil que ci-dessus. |
 | Linux | `KitTVAndroid-…-linux-x64.tar.gz` (ou `arm64`) | Décompressez, puis lancez `kit-tv-android`. |
 
-L'application s'ouvre dans votre navigateur et se ferme quand vous fermez l'onglet. Elle fait exactement la même chose que les scripts ci-dessous, avec les mêmes sécurités. Les applications ne sont pas signées (un certificat est payant), d'où l'avertissement au premier lancement.
+L'application s'ouvre dans votre navigateur et se ferme quand vous fermez l'onglet. Elle fait exactement la même chose que les scripts ci-dessous, avec les mêmes sécurités. Les applications ne sont pas signées (un certificat est payant), d'où l'avertissement au premier lancement. Si un antivirus signale l'exe, c'est une fausse alerte fréquente pour les petits programmes non signés : le code source est dans ce dépôt, et vous pouvez comparer l'empreinte du fichier avec `SHA256SUMS.txt` de la release.
 
 **Avec les scripts** (sans rien télécharger d'autre que le kit) :
 
@@ -285,6 +285,8 @@ En dernier recours, une réinitialisation d'usine remet toujours la TV à neuf. 
 | Ça rame encore pendant les films | Passez la TV en Wi-Fi **5 GHz** ou en câble Ethernet. Désactivez le lissage de mouvement (MEMC, Motion) dans les réglages d'image. Si ça ne suffit pas, la TV manque de puissance : un boîtier externe sera plus fluide. |
 | Windows bloque `LANCER.bat` | Clic droit sur le fichier → **Propriétés** → cochez **Débloquer**. Ou « Informations complémentaires » → **Exécuter quand même**. |
 | macOS refuse d'ouvrir `LANCER.command` | Clic droit (ou Ctrl+clic) sur le fichier → **Ouvrir** → **Ouvrir**. Si « permission refusée » s'affiche, ouvrez le Terminal dans le dossier du kit et tapez `bash LANCER.sh`. |
+| macOS : l'application ne s'ouvre pas | Dans le Terminal, tapez `xattr -cr ~/Downloads/"Kit TV Android"` (adaptez le chemin), puis double-cliquez à nouveau sur **Kit TV Android**. |
+| macOS : « aucun appareil ne répond » alors que la TV est détectée | Autorisez le **Terminal** dans **Réglages Système → Confidentialité et sécurité → Réseau local**, puis relancez l'application. |
 | Linux : « Permission non accordée » sur `LANCER.sh` | Tapez `chmod +x LANCER.sh` une fois, ou lancez `bash LANCER.sh`. |
 
 ## Contenu du dossier
